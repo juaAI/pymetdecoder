@@ -173,8 +173,7 @@ class SYNOP(pymetdecoder.Report):
                                 raise Exception
                         except Exception:
                             # NOTE: We raise an error here to prevent the decoder from continuing.
-                            raise pymetdecoder.DecodeError(
-                                "Unexpected precipitation group found in section 1, thus unable to decode. Section 0 groups may be missing.")
+                            logging.warning("Unexpected precipitation group found in section 1")
                     elif i == 7: # Present and past weather
                         if not self._is_valid_group(next_group):
                             logging.warning("{} is not a valid group (expecting 7wwWW)".format(next_group))
